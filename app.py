@@ -28,9 +28,7 @@ with st.form(key="brief_form"):
 
 # AI response
 if submit and user_input:
-# AI response
-if submit and user_input:
-    try:  # <-- this was missing one tab of indentation
+    try:
         with st.spinner("Generating your trip brief..."):
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
