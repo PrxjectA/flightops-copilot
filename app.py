@@ -37,7 +37,7 @@ if submit and user_input:
                     {"role": "user", "content": user_input}
                 ]
             )
-            brief = response.choices[0].message["content"]
+            brief = response.choices[0].message.content
 
         st.markdown("## ✈️ Trip Brief Generated")
         st.markdown(f"<div style='background-color:#f0f8ff; padding:20px; border-radius:10px;'>{brief}</div>", unsafe_allow_html=True)
