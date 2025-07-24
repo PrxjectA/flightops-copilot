@@ -4,14 +4,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Load API key securely from .env
-api_key = os.getenv("OPENAI_API_KEY")
-client = openai.OpenAI(api_key=api_key)
+# Classic style — best for Streamlit Cloud
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
-response = client.chat.completions.create(
+response = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
     messages=[{"role": "user", "content": "Say hello"}]
 )
 
-print(response.choices[0].message.content)
+print(response.choices[0].message["content"])
 
