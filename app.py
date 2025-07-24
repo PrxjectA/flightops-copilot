@@ -28,35 +28,35 @@ with st.form(key="brief_form"):
 
 # AI response
 if submit and user_input:
-    try:
+# AI response
+if submit and user_input:
+    try:  # <-- this was missing one tab of indentation
         with st.spinner("Generating your trip brief..."):
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=[
-                    {"role": "system", "content": "You are an expert private aviation operations planner. Generate clear, concise trip briefs using professional aviation language."},
+                    {"role": "system", "content": "You are an expert private aviation operations planner. Generate trip briefs that are clear, well-structured, and separated into bullet points or sections with newlines for readability."},
                     {"role": "user", "content": user_input}
                 ]
             )
             brief = response.choices[0].message.content
 
-        st.markdown("## ✈️ Trip Brief Generated")
         st.markdown("## 📝 Trip Brief Generated")
-st.markdown(f"""
-    <div style='
-        background-color: #111111;
-        color: #f0f0f0;
-        padding: 30px;
-        border-radius: 14px;
-        font-size: 1.15em;
-        line-height: 1.8;
-        font-family: "Segoe UI", "Helvetica Neue", sans-serif;
-        white-space: pre-wrap;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    '>
-        {brief}
-    </div>
-""", unsafe_allow_html=True)
-
+        st.markdown(f"""
+            <div style='
+                background-color: #111111;
+                color: #f0f0f0;
+                padding: 30px;
+                border-radius: 14px;
+                font-size: 1.15em;
+                line-height: 1.8;
+                font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+                white-space: pre-wrap;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            '>
+                {brief}
+            </div>
+        """, unsafe_allow_html=True)
 
     except Exception as e:
         st.error(f"❌ Error generating brief: {e}")
