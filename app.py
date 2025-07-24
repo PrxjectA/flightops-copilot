@@ -40,19 +40,23 @@ if submit and user_input:
             brief = response.choices[0].message.content
 
         st.markdown("## ✈️ Trip Brief Generated")
-        st.markdown(f"""
+        st.markdown("## 📝 Trip Brief Generated")
+st.markdown(f"""
     <div style='
-        background-color: #000000;
-        color: #ffffff;
-        padding: 20px;
-        border-radius: 12px;
-        font-size: 1.1em;
-        line-height: 1.6;
-        font-family: monospace;
+        background-color: #111111;
+        color: #f0f0f0;
+        padding: 30px;
+        border-radius: 14px;
+        font-size: 1.15em;
+        line-height: 1.8;
+        font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+        white-space: pre-wrap;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     '>
         {brief}
     </div>
 """, unsafe_allow_html=True)
+
 
     except Exception as e:
         st.error(f"❌ Error generating brief: {e}")
